@@ -31,31 +31,17 @@
   </div>
   <div class="col-md-12" style="margin:0;margin-top:30px; padding:0">
     <div class="col-md-6" style="margin:0; padding:0;padding-right:22px">
-      <div id="map" style='width: 555pxx; height: 300px;'></div>
+      <div id="map" style='width: 555pxx; height: 300px;'>
+
+      </div>
     </div>
     <div class="col-md-6" style="margin:0; padding:0">
       <div class="col-sm-6" style="margin:0; padding:0; float: left;">
         <div class="rating-block">
-          <h4>Average user rating</h4>
+          <h4><b>平均評価点</b></h4>
           <h2 class="bold padding-bottom-7"><%= @motel.avarege_point %>
             <small>/ 5</small>
           </h2>
-<!--          <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">-->
-<!--            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>-->
-<!--          </button>-->
-          <%# %>
-<!--          <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">-->
-<!--            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>-->
-<!--          </button>-->
-<!--          <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">-->
-<!--            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>-->
-<!--          </button>-->
-<!--          <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">-->
-<!--            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>-->
-<!--          </button>-->
-<!--          <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">-->
-<!--            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>-->
-<!--          </button>-->
           <div class="col-md-3 star-user">
             <div class="star_home_page stars-outer">
               <div class="stars-inner" style="width: <%= @motel.avarege_point*20 %>%"></div>
@@ -64,7 +50,7 @@
         </div>
       </div>
       <div class="col-sm-6" style="margin:0; padding:0;float: left;padding-left: 10px;">
-        <h4>Rating breakdown</h4>
+        <h4><b>詳細</b></h4>
         <div class="pull-left">
           <div class="pull-left" style="width:35px; line-height:1;">
             <div style="height:9px; margin:5px 0;">5 <span class="glyphicon glyphicon-star"></span></div>
@@ -232,7 +218,7 @@
       <br>
       <div class="row">
         <div class="col-md-12 list-key">
-          <h4>レビューハイライト:</h4>
+          <h4><b>レビューハイライト</b></h4>
           <ul>
             <%= progressive_render do %>
               <% top_keywords = @ke.extract_keyphrase(@reviews_text.join("\n")) %>
@@ -250,7 +236,7 @@
       </div>
     </div>
     <div style="margin-top: 100px;" class="review_search_content" id="reviews">
-      <%= render partial: "motels/review", collection: @reviews.order_after_like %>
+      <%= render partial: "motels/review", collection: @reviews.order_time %>
     </div>
     <div id="paginator1">
       <%= paginate @reviews, remote: true %>
