@@ -84,13 +84,13 @@ class MotelsController < ApplicationController
   end
 
   def  add_bookmark
-      @motel = Motel.find_by id: params[:motel_id]
-      UserHotel.create user_id: current_user.id , motel_id: @motel.id
-      respond_to do |format|
-        format.html { redirect_to request.referrer }
-        format.js { render 'motels/bookmark.js.erb' }
-      end
+    @motel = Motel.find_by id: params[:motel_id]
+    UserHotel.create user_id: current_user.id , motel_id: @motel.id
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.js { render 'motels/bookmark.js.erb' }
     end
+  end
   def  undo_bookmark
     @motel = Motel.find_by id: params[:motel_id]
     UserHotel.where(user_id: current_user.id, motel_id: @motel.id).delete_all
@@ -98,6 +98,11 @@ class MotelsController < ApplicationController
       format.html { redirect_to request.referrer }
       format.js { render 'motels/bookmark.js.erb' }
     end
+  end
+
+  def add_my_list
+    UserHotel.create user_id: current_user.id , motel_id: @motel.id
+    redirect_to motel_path(@motel)
   end
 
 
